@@ -30,10 +30,18 @@ it("should return the same array if all elements are identical", () => {
   ).toEqual(["Гарри Поттер", "Гарри Поттер", "Гарри Поттер"]);
 });
 
+it("should correctly sort strings with mixed case", () => {
+  expect(sorting.sortByName(["хагрид", "Гарри Поттер", "букля"])).toEqual([
+    "букля",
+    "Гарри Поттер",
+    "хагрид",
+  ]);
+});
+
 it("should correctly sort strings with special characters", () => {
-  expect(sorting.sortByName(["apple!", "apple?", "apple."])).toEqual([
-    "apple!",
-    "apple.",
-    "apple?",
+  expect(sorting.sortByName(["Гарри!", "Гарри?", "Гарри."])).toEqual([
+    "Гарри!",
+    "Гарри.",
+    "Гарри?",
   ]);
 });
