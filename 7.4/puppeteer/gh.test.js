@@ -1,13 +1,16 @@
 let page;
 
+beforeEach(async () => {
+  page = await browser.newPage();
+});
+
+afterEach(async () => {
+  await page.close();
+});
+
 describe("Github page tests", () => {
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/team");
-  });
-
-  afterEach(async () => {
-    await page.close();
   });
 
   test("The h1 header content", async () => {
@@ -38,14 +41,6 @@ describe("Github page tests", () => {
 });
 
 describe("New Github pages tests", () => {
-  beforeEach(async () => {
-    page = await browser.newPage();
-  });
-
-  afterEach(async () => {
-    await page.close();
-  });
-
   test("The h1 content on sponsors page", async () => {
     await page.goto("https://github.com/sponsors");
     await page.waitForSelector("#hero-section-brand-heading");
